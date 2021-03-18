@@ -1,17 +1,11 @@
 import express from 'express';
 
-import { createCourse } from './routes';
+import router from '../src/routes/index';
 
 const app = express();
 app.use(express.json());
 
-app.get('/', createCourse);
-
-app.post('/courses', (request, response) => {
-  const { name } = request.body;
-  return response.json({ name });
-  
-});
+app.use(router);
 
 app.listen(3333, () => {
   console.log(`Server is running on port 3333`);
