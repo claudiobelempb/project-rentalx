@@ -35,8 +35,8 @@ class CategoriesRepository {
 
   findByName(name: string): Category {
 
-    const categoryExists = this.categories.find(category => category.name == name);
-    return categoryExists;
+    const categoryNameExists = this.categories.find(categoryName => categoryName.name == name);
+    return categoryNameExists;
     
   }
 
