@@ -2,15 +2,10 @@ import { Router } from 'express';
 import { CategoriesRepository } from '../repositories/CategoriesRepository';
 import { CreateCategoryService } from '../services/CreateCategoryService';
 import { IndexCategoryService } from '../services/IndexCategoryService';
-
-interface ICreateCategories {
-  name: string;
-  description: string;
-}
+import { ShowCategoryService } from '../services/ShowCategoryService';
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
-
 
 categoriesRoutes.get('/', (request, response) => {
 
@@ -18,7 +13,20 @@ categoriesRoutes.get('/', (request, response) => {
 
   const categories = indexCategoryService.execute();
 
-  return response.json(categories)
+  return response.json(categories);
+
+});
+
+categoriesRoutes.get('/:id', (request, response) => {
+  
+  const { id } = request.params;
+
+  const showCategoryService = new ShowCategoryService(categoriesRepository);
+
+  const category = showCategoryService.execute(id);
+
+  return response.json(category);
+
 });
 
 categoriesRoutes.post('/', (request, response) => {
