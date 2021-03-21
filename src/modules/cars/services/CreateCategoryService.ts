@@ -3,8 +3,6 @@ import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
 interface IRequest {
   name: string;
   description: string;
-  created_at: Date;
-  updated_at: Date;
 }
 
 class CreateCategoryService {

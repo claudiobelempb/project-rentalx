@@ -17,15 +17,15 @@ class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 
-  create({ name, description, created_at, updated_at }: ICategoriesRepositoryDTO): void {
+  create({ name, description }: ICategoriesRepositoryDTO): void {
 
     const category = new Category();
 
     Object.assign(category, {
       name,
       description,
-      created_at,
-      updated_at
+      created_at: new Date(),
+      updated_at: new Date()
     });
 
     this.categories.push(category);

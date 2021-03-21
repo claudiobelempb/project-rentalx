@@ -36,9 +36,7 @@ categoriesRoutes.post('/', (request, response) => {
 
   const category = {
     name,
-    description,
-    created_at: new Date(),
-    updated_at: new Date()
+    description
   }
   createCategoryService.execute(category);
   
