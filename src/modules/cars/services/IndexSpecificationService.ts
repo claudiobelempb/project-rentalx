@@ -4,14 +4,14 @@ import {SpecificationsRepository } from '../repositories/SpecificationsRepositor
 
 class IndexSpecificationService {
 
-  constructor(private specificationRepository: SpecificationsRepository){}
+  constructor(private specificationsRepository: SpecificationsRepository){}
 
   execute(): Specification[] | undefined{
 
-    const specification = this.specificationRepository.index();
+    const specification = this.specificationsRepository.index();
 
     return specification;
-    
+
   }
 
 }
