@@ -1,6 +1,6 @@
 import { Specification } from '../model/Specification';
 
-import {SpecificationsRepository } from '../repositories/SpecificationsRepository';
+import {SpecificationsRepository } from '../repositories/implementations/SpecificationsRepository';
 
 class IndexSpecificationService {
 
