@@ -8,8 +8,7 @@ interface ISpecificationsDTO {
 interface ISpecificationsRepository {
   index(): Specification[] | undefined;
   show(id: string): Specification[] | undefined;
-  create({ name, description }: ISpecificationsDTO): void;
-
+  create({ name, description }: Specification): void;
   findByName(name: string): ISpecificationsDTO;
   findById(id: string): Specification;
 }
