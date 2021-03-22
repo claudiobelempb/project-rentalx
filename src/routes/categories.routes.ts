@@ -5,7 +5,7 @@ import { createCategoryController } from '../modules/cars/useCases/createCategor
 import { indexCategoryController } from '../modules/cars/useCases/indexCategory';
 
 const categoriesRoutes = Router();
-const categoriesRepository = new CategoriesRepository();
+const categoriesRepository = CategoriesRepository.getInstance();
 
 categoriesRoutes.get('/', (request, response) => {
   return indexCategoryController.handle(request, response);

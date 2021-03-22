@@ -2,7 +2,7 @@ import { IndexCategoryController } from '../../useCases/indexCategory/IndexCateg
 import { IndexCategoryUserCase } from "./IndexCategoryUseCase";
 import { CategoriesRepository } from "../../repositories/CategoriesRepository";
 
-const categoryRepository = new CategoriesRepository();
+const categoryRepository = CategoriesRepository.getInstance();
 const indexCategoryUserCase = new IndexCategoryUserCase(categoryRepository);
 const indexCategoryController = new IndexCategoryController(indexCategoryUserCase);
 
