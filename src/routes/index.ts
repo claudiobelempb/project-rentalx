@@ -2,9 +2,9 @@ import { Router } from 'express';
 import { categoriesRoutes } from './categories.routes';
 import { specificationRoutes } from './specifications.routes';
 
-const routes = Router();
+const router = Router();
 
-routes.use('/categories', categoriesRoutes);
-routes.use('/specifications', specificationRoutes);
+router.use('/categories', categoriesRoutes);
+router.use('/specifications', specificationRoutes);
 
-export default routes;
+export  { router };
