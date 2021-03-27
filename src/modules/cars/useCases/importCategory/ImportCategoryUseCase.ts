@@ -13,21 +13,17 @@ class ImportCategoryUseCase {
   constructor(private categoriesRepository: CategoriesRepository){}
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
-
     return new Promise((resolve, reject) => {
 
       const stream = fs.createReadStream(file.path);
-   
       const categories: IImportCategory[] = [];
 
       const parseFile = csvParse();
-    
       stream.pipe(parseFile);
 
       parseFile
       .on("data", async (line) => {
         // ["name", "description"]
-        console.log(line)
         const [name, description] = line;
         categories.push({
           name,
@@ -40,13 +36,21 @@ class ImportCategoryUseCase {
       .on("error", (err) => {
         reject(err);
       });
+
     });
   }
 
   async execute(file: Express.Multer.File): Promise<void> {
     
     const categories = await this.loadCategories(file);
-    console.log(categories);
+    
+    categories.map( async (category) => {
+      const { name, description } = category;
+      const existsNameCategory = this.categoriesRepository.findByName(name);
+      if(!existsNameCategory){
+        this.categoriesRepository.create({ name, description});
+      }
+    });
 
   }
 }
